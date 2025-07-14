@@ -1,0 +1,23 @@
+<!-- <h1>Total order Prices : {{Total}}</h1>
+
+
+<h1>Category ID : {{selectedCatgeroyId | secoer}}</h1> -->
+
+
+<div class="container m-5" appHighliteielement>
+  <select class="form-select" aria-label="Category select" (change)="filter()" [(ngModel)]="selectedCategoryId">
+    <option selected value="0">All</option>
+    <option *ngFor="let x of category" value="{{x.id}}">{{x.name}}</option>
+
+  </select>
+</div>
+
+<div class="p-3 mb-2 bg-warning text-dark">
+<app-prodect [selectedCategoryId]="selectedCategoryId" (OnTotlalPriceChange)="CalculateTotal($event)"></app-prodect>
+</div>
+
+<h1>Total Prices {{TotalPrices}}</h1>
+
+<input type="text" #userinput class="input mb-2">
+
+<!-- <p>{{myInput.nativeElement.value}}</p> -->

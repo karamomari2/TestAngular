@@ -1,107 +1,54 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { Iprodect } from '../../models/iprodect';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { Icategory } from '../../models/icategory';
 import { FormsModule } from '@angular/forms';
+import { Highliteielement } from '../../directive/appHighliteielement/highliteielement';
+import { ProdectService } from '../../services/prodect-service';
 
 @Component({
   selector: 'app-prodect',
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule, Highliteielement, CurrencyPipe],
   templateUrl: './prodect.html',
   styleUrl: './prodect.css'
 })
-export class Prodect {
-  Total:number=0;
- prodect:Iprodect[];
- category:Icategory[];
-  categoryId:number=0;
+export class Prodect implements OnChanges {
+  @Input() selectedCategoryId: number = 0;
 
-  constructor(){
-   this.prodect = [
-  {
-    id: 1,
-    name: 'iPhone 15 Pro',
-    quinty: 0,
-    categoryId: 1,
-    prices: 1199.99,
-    imageurl: 'https://murena.com/wp-content/uploads/2025/01/Murena_Pixel_8_Black-300x300.png'
-    
-  },
-  {
-    id: 1,
-    name: 'Samsung Galaxy S24',
-    quinty: 15,
-    categoryId: 1,
-    prices: 999.99,
-    imageurl: 'https://murena.com/wp-content/uploads/2025/01/Murena_Pixel_8_Black-300x300.png'
-   
-  },
-  {
-    id: 3,
-    name: 'MacBook Air M3',
-    quinty: 5,
-    categoryId: 1,
-    prices: 1499.00,
-    imageurl: 'https://murena.com/wp-content/uploads/2025/01/Murena_Pixel_8_Black-300x300.png'
+  //define event 
+  @Output() OnTotlalPriceChange: EventEmitter<number> 
   
-  },
-  {
-    id: 4,
-    name: 'Dell ',
-    quinty: 8,
-    categoryId: 2,
-    prices: 34.00,
-      imageurl: 'https://murena.com/wp-content/uploads/2025/01/Murena_Pixel_8_Black-300x300.png'
+  Total: number = 0;
+  prodect: Iprodect[];
+  FillterProdected: Iprodect[];
 
-  },
-  {
-    id: 5,
-    name: 'Tocepa',
-    quinty: 20,
-    categoryId: 2,
-    prices: 99.00,
-    imageurl: 'https://murena.com/wp-content/uploads/2025/01/Murena_Pixel_8_Black-300x300.png'
-  
-  },
-  {
-    id: 6,
-    name: 'Hp',
-    quinty: 12,
-    categoryId: 2,
-    prices: 159.95,
-    imageurl: 'https://murena.com/wp-content/uploads/2025/01/Murena_Pixel_8_Black-300x300.png'
-  },
-  {
-    id: 7,
-    name: 'AirPods Pro (2nd Gen)',
-    quinty: 30,
-    categoryId: 3,
-    prices: 249.00,
-    imageurl: 'https://murena.com/wp-content/uploads/2025/01/Murena_Pixel_8_Black-300x300.png'
-  }  ,{
-    id: 8,
-    name: 'AirPods',
-    quinty: 12,
-    categoryId: 3,
-    prices: 159.95,
-    imageurl: 'https://murena.com/wp-content/uploads/2025/01/Murena_Pixel_8_Black-300x300.png'
-  }
-];
+  success: boolean = true;
+  constructor(private _ProdectService: ProdectService) {
 
-this.category=[
-  {name:"iphon",id:1},
-  {name:"labtop",id:2},
-  {name:"samer",id:3}
-]
+    this.OnTotlalPriceChange = new EventEmitter<number>();
+
+    this.prodect = this._ProdectService.GetAllProdect();
+
+    this.FillterProdected = this._ProdectService.GetAllProdect();
+
+
+
   }
 
 
-  buy(prices:number,count:string){
-   this.Total += prices*parseInt(count);
+  buy(prices: number, count: string) {
+    this.Total += prices * parseInt(count);
+    // -fire event
+    this.OnTotlalPriceChange.emit(this.Total);
   }
 
-trackitem(index: number, item: Iprodect) {
-  return item.id; // أو أي مفتاح فريد
-}
+  trackitem(index: number, item: Iprodect) {
+    return item.id; // أو أي مفتاح فريد
+  }
+
+  ngOnChanges() {
+    this.FillterProdected = this._ProdectService.GetProdectsByCatID(this.selectedCategoryId);
+  }
+
 
 }

@@ -1,36 +1,37 @@
-<h1>Total order Prices : {{Total}}</h1>
+<!-- <ng-container *ngFor="let x of prodect;let i=index; trackBy: trackitem"> -->
+  <div class="row">
+@for (x of FillterProdected; track x.id;let i=$index) {
 
+    <div class="col-md-3"  
+    >
+      <div  class="card ml-2" style="width: 18rem;" [style.background-color]="x.quinty == 0 ? 'yellow' : 'white'"
+      >
+        <img [src]="x.imageurl" class="card-img-top img-thumbnail rounded"  alt="..."  />
+       <div appHighliteielement [externalcolor]="'green'" [appHighliteielement]="'yellow'" class="card-body">
+          <h5 class="card-title">{{i}} --- {{x.name}}</h5>
+          <div class="card-text">
+            <h4 > prices : {{x.prices | currency:"JRD" }} </h4>
 
-<h1>Category ID  : {{categoryId}}</h1>
+            <!-- <h4 *ngIf="x.quinty > 1 ;else lastitem">  quinty: {{x.quinty}}</h4>
+            <ng-template #lastitem><p>quinty : last item </p></ng-template> -->
+            <div [ngSwitch]="x.quinty">
+              <p *ngSwitchCase="1">last one item </p>
+              <p *ngSwitchCase="2">last tow item </p>
+              <p *ngSwitchDefault>{{x.quinty}}</p>
 
+            </div>
+            
+            <input type="number" #count>
+            <button class="btn btn-primary" (click)="buy(x.prices,count.value)">buy</button>
 
-<div class="container m-5">
-  <select class="form-select" aria-label="Catgoey select"  [(ngModel)]="categoryId">
-  <option selected>Open this select menu</option>
-  <option *ngFor="let x of category" value="{{x.id}}" >{{x.name}}</option>
-
-</select>
-</div>
-
-<div class="row">
-  <div *ngFor="let x of prodect;let i=index; trackBy: trackitem" class="col-md-3"
-   [class.d-none]="x.categoryId != categoryId">
-<div class="card ml-2" style="width: 18rem;"
-     [style.background-color]="x.quinty == 0 ? 'yellow' : 'white'">
-
-      <img [src]="x.imageurl" class="card-img-top" alt="..."  />
-      <div class="card-body">
-        <h5 class="card-title">{{i}} --- {{x.name}}</h5>
-        <div class="card-text">
-          <h4>{{x.prices}}</h4>
-          <h4>{{x.quinty}}</h4>
-           <input type="number" #count>
-          <button class="btn btn-primary" (click)="buy(x.prices,count.value)">buy</button>
-
+          </div>
+          <!-- <a href="#" class="btn btn-primary">Add</a> -->
         </div>
-        <!-- <a href="#" class="btn btn-primary">Add</a> -->
       </div>
     </div>
-  </div>
-</div>
+  }
 
+  </div>
+
+
+<!-- </ng-container> -->
