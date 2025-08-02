@@ -1,0 +1,43 @@
+<h1>{{prodect | json}} </h1>
+<form (submit)="AddNewProdect()" #AddProForm="ngForm">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Name</label>
+        <input type="email" [(ngModel)]="prodect.name" class="form-control"
+         id="exampleInputEmail1" aria-describedby="emailHelp" name="name" 
+         required
+        #ProName="ngModel"
+         pattern="^[a-zZ-a]{3,15}$">
+          <div *ngIf="ProName.invalid && ProName.touched" class="text-danger">
+    <p *ngIf="ProName.errors?.['required']">Name is required</p>
+    <p *ngIf="ProName.errors?.['pattern']">Name must be letters only, 3–15 characters</p>
+  </div>
+    </div>
+    <div>
+        <label for="exampleInputEmail1" class="form-label">Prices :</label>
+        <input name="prices" type="number" [(ngModel)]="prodect.prices"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+    </div>
+    <div>
+        <label for="exampleInputEmail1" class="form-label">Quintity :</label>
+        <input name="quinty" type="number" [(ngModel)]="prodect.quinty" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div>
+        <label for="exampleInputEmail1" class="form-label">Image :</label>
+        <input type="file" [(ngModel)]="prodect.imageurl" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Catrgory</label>
+        <select name="cat.id" class="form-select" [(ngModel)]="prodect.categoryId" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            @for(cat of categorys;track cat.id){
+            <option value=",{{cat.id}}">{{cat.name}}</option>
+            }           
+        </select>
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" [disabled]="AddProForm.invalid" class="btn btn-primary">Submit</button>
+</form>

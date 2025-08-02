@@ -1,1 +1,31 @@
-<p>detalies works!</p>
+<div *ngIf="prodecet; else notFound" class="card ml-2" style="width: 18rem;">
+  <img [src]="prodecet.imageurl" class="card-img-top img-thumbnail rounded" alt="..." />
+  <div class="card-body">
+    <h5 class="card-title">{{ prodecet.name }}</h5>
+    <div class="card-text">
+      <h4>prices : {{ prodecet.prices | currency: 'JOD' }}</h4>
+
+      <div [ngSwitch]="prodecet.quinty">
+        <p *ngSwitchCase="1">last one item</p>
+        <p *ngSwitchCase="2">last two items</p>
+        <p *ngSwitchDefault>{{ prodecet.quinty }}</p>
+      </div>
+<p>{{prodecet.quinty}}</p>
+    </div>
+  </div>
+</div>
+
+<ng-template #notFound>
+  <h1>This product does not exist</h1>
+</ng-template>
+
+
+<div class="m-2">
+<button class="btn btn-success m-1" (click)="Next()">Next</button>
+<button class="btn btn-success m-1" (click)="pre()">Previce</button>
+
+</div>
+
+<button class="btn btn-primary" (click)="GoBack()">Back</button>
+
+<!-- <button class="btn btn-primary" routerLink="/prodect">Back</button> -->

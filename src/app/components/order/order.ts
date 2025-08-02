@@ -16,6 +16,7 @@ export class Order implements AfterViewInit{
  @ViewChild(Prodect) ProdectComonentObj !:Prodect
 
 
+
    category:Icategory[];
   selectedCategoryId: number = 0;
 TotalPrices:number=0;

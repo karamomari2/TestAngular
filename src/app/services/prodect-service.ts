@@ -99,4 +99,8 @@ export class ProdectService {
     }
   }
 
+  mapProdectId():number[]{
+    return this.prodects.map((pro)=>pro.id)
+  }
+
 }

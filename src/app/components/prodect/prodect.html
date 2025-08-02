@@ -1,9 +1,10 @@
 <!-- <ng-container *ngFor="let x of prodect;let i=index; trackBy: trackitem"> -->
   <div class="row">
+
+    <button class="btn btn-primary" routerLink="/add-prodect">add prodect</button>
 @for (x of FillterProdected; track x.id;let i=$index) {
 
-    <div class="col-md-3"  
-    >
+    <div class="col-md-3" >
       <div  class="card ml-2" style="width: 18rem;" [style.background-color]="x.quinty == 0 ? 'yellow' : 'white'"
       >
         <img [src]="x.imageurl" class="card-img-top img-thumbnail rounded"  alt="..."  />
@@ -20,7 +21,8 @@
               <p *ngSwitchDefault>{{x.quinty}}</p>
 
             </div>
-            
+            <button class="btn btn-success" (click)="ViewDetalis(x.id)">Detalis</button>
+
             <input type="number" #count>
             <button class="btn btn-primary" (click)="buy(x.prices,count.value)">buy</button>
 

@@ -1,0 +1,86 @@
+{
+  "prodect": [
+    {
+      "id": "1",
+      "name": "iPhone 15 Pro",
+      "quinty": 1,
+      "categoryId": 1,
+      "prices": 800.99,
+      "imageurl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIcFbX-CC1ugTZaxsSyZdHY8LkIHiQXJp_2g&s"
+    },
+    {
+      "id": "2",
+      "name": "Samsung Galaxy S24 Ultra",
+      "quinty": 3,
+      "categoryId": 1,
+      "prices": 999.99,
+      "imageurl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIcFbX-CC1ugTZaxsSyZdHY8LkIHiQXJp_2g&s"
+    },
+    {
+      "id": "3",
+      "name": "Lenovo Legion 5 Pro",
+      "quinty": 2,
+      "categoryId": 2,
+      "prices": 1349.5,
+      "imageurl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIcFbX-CC1ugTZaxsSyZdHY8LkIHiQXJp_2g&s"
+    },
+    {
+      "id": "4",
+      "name": "Sony WH-1000XM5 Headphones",
+      "quinty": 5,
+      "categoryId": 3,
+      "prices": 399,
+      "imageurl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIcFbX-CC1ugTZaxsSyZdHY8LkIHiQXJp_2g&s"
+    },
+    {
+      "id": "5",
+      "name": "Apple Watch Series 9",
+      "quinty": 4,
+      "categoryId": 4,
+      "prices": 429,
+      "imageurl": "https://m.media-amazon.com/images/I/61LtuGzXeaL.jpg"
+    },
+    {
+      "id": "6",
+      "name": "Logitech MX Master 3S",
+      "quinty": 6,
+      "categoryId": 5,
+      "prices": 99.99,
+      "imageurl": "https://m.media-amazon.com/images/I/61LtuGzXeaL.jpg"
+    },
+    {
+      "id": "4cb3",
+      "name": "Iphon karam",
+      "prices": 25,
+      "quinty": 25,
+      "categoryId": "3"
+    },
+    {
+      "id": "9790",
+      "name": "xzfew",
+      "prices": 32
+    }
+  ],
+  "category": [
+    {
+      "id": "1",
+      "name": "Smartphones"
+    },
+    {
+      "id": "2",
+      "name": "Laptops"
+    },
+    {
+      "id": "3",
+      "name": "Audio"
+    },
+    {
+      "id": "4",
+      "name": "Wearables"
+    },
+    {
+      "id": "5",
+      "name": "Accessories"
+    }
+  ]
+}

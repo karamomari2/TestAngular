@@ -1,0 +1,6 @@
+<p>login works!</p>
+
+<p>{{count}}</p>
+
+<button class="btn btn-primary m-2"   [disabled]="isUserLogged"  (click)="login()">Login</button>
+<button class="btn btn-danger m-2"   [disabled]="!isUserLogged"  (click)="logout()">Logout</button>
